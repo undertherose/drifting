@@ -7,8 +7,8 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/final-project-kool-kids/servers/finalgateway/models/users"
-	"github.com/final-project-kool-kids/servers/finalgateway/sessions"
+	"github.com/drifting/servers/gateway/models/users"
+	"github.com/drifting/servers/gateway/sessions"
 	"golang.org/x/crypto/bcrypt"
 )
 
@@ -85,6 +85,8 @@ func (ctx *HandlerContext) SpecificUserHandler(w http.ResponseWriter, r *http.Re
 		return
 	}
 
+	//TODO: me path: gets personal stuff
+	//TODO: Get rid of ability to see other users
 	id := path.Base(r.URL.Path)
 	var numID int64
 	if id == "me" {

@@ -6,15 +6,15 @@ export MYSQL_DATABASE=auth
 
 ssh -i ~/.ssh/finalPrivKey.pem ec2-user@18.222.243.235 << EOF
 
-    docker network rm queueNetwork
-    docker network create queueNetwork
+    docker network rm driftingNetwork
+    docker network create driftingNetwork
     
-    docker rm -f finalsqldb
+    docker rm -f sqldb
 
-    docker run -d --name finalsqldb \
+    docker run -d --name sqldb \
     -e MYSQL_ROOT_PASSWORD=$MYSQL_ROOT_PASSWORD \
     -e MYSQL_DATABASE=$MYSQL_DATABASE \
-    --network queueNetwork \
-    koolkids441/finalsqldb
+    --network driftingNetwork \
+    wecancodeit/sqldb
 
 EOF

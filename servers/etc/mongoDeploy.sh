@@ -2,10 +2,10 @@
 
 ssh -i ~/.ssh/finalPrivKey.pem ec2-user@18.222.243.235 << EOF
 
-    docker rm -f finalmongo
+    docker rm -f mongoDB
 
-    docker run -d --name finalmongo \
-    --network queueNetwork \
+    docker run -d --name mongoDB \
+    --network driftingNetwork \
     mongo
 
     exit

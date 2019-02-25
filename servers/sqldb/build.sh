@@ -1,3 +1,3 @@
 #!/bin/sh
-docker build -t koolkids441/finalsqldb .
-docker push koolkids441/finalsqldb
+docker build -t wecancodeit/sqldb .
+docker push wecancodeit/sqldb

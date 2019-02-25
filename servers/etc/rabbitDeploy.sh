@@ -5,7 +5,7 @@ ssh -i ~/.ssh/finalPrivKey.pem ec2-user@18.222.243.235 << EOF
     docker rm -f rabbitmq
 
     docker run -d --name rabbitmq \
-    --network queueNetwork \
+    --network driftingNetwork \
     rabbitmq:3-management
 
     exit

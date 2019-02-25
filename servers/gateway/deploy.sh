@@ -18,17 +18,16 @@ export FAQADDR=faq:80
 ssh -i ~/.ssh/finalPrivKey.pem ec2-user@18.222.243.235 << EOF
 
     docker rm -f redisServer
-    docker rm -f queueServer
+    docker rm -f driftingServer
     
-    docker pull koolkids441/finalgateway
+    docker pull wecancodeit/gateway
 
     docker run -d --name redisServer \
-    --network queueNetwork \
+    --network driftingNetwork \
     redis
 
-    docker run -d --name queueServer --network queueNetwork -p 443:443 -e REDISADDR=$REDISADDR -v /etc/letsencrypt:/etc/letsencrypt:ro -e TLSCERT=$TLSCERT -e TLSKEY=$TLSKEY -e MYSQL_ROOT_PASSWORD=$MYSQL_ROOT_PASSWORD -e DSN=$DSN -e COURSESADDR=$COURSESADDR -e FAQADDR=$FAQADDR -e MONGOADDR=$MONGOADDR -e MQADDR=$MQADDR -e MQNAME=$MQNAME koolkids441/finalgateway
-
-
+    docker run -d --name driftingServer --network driftingNetwork -p 443:443 -e REDISADDR=$REDISADDR -v /etc/letsencrypt:/etc/letsencrypt:ro -e TLSCERT=$TLSCERT -e TLSKEY=$TLSKEY -e MYSQL_ROOT_PASSWORD=$MYSQL_ROOT_PASSWORD -e DSN=$DSN -e COURSESADDR=$COURSESADDR -e FAQADDR=$FAQADDR -e MONGOADDR=$MONGOADDR -e MQADDR=$MQADDR -e MQNAME=$MQNAME wecancodeit/gateway
+    
     exit
 EOF
 

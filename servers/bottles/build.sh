@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 #builds docker container
-docker build -t koolkids441/courses .
+docker build -t wecancodeit/bottles .
 
-docker push koolkids441/courses
+docker push wecancodeit/bottles
 

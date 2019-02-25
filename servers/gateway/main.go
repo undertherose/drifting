@@ -12,9 +12,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/final-project-kool-kids/servers/finalgateway/handlers"
-	"github.com/final-project-kool-kids/servers/finalgateway/models/users"
-	"github.com/final-project-kool-kids/servers/finalgateway/sessions"
+	"github.com/drifting/servers/gateway/handlers"
+	"github.com/drifting/servers/gateway/models/users"
+	"github.com/drifting/servers/gateway/sessions"
 	"github.com/go-redis/redis"
 	_ "github.com/go-sql-driver/mysql"
 )
@@ -123,17 +123,18 @@ func main() {
 
 	handlersContext.StartMQ(mqAddr, mqName)
 
-	mux.HandleFunc("/final/users", handlersContext.UsersHandler)
-	mux.HandleFunc("/final/users/", handlersContext.SpecificUserHandler)
-	mux.HandleFunc("/final/sessions", handlersContext.SessionsHandler)
-	mux.HandleFunc("/final/sessions/", handlersContext.SpecificSessionHandler)
-	mux.HandleFunc("/final/allusers", handlersContext.GetAllUsersHandler)
+	mux.HandleFunc("/v1/users", handlersContext.UsersHandler)
+	mux.HandleFunc("/v1/users/", handlersContext.SpecificUserHandler)
+	mux.HandleFunc("/v1/sessions", handlersContext.SessionsHandler)
+	mux.HandleFunc("/v1/sessions/", handlersContext.SpecificSessionHandler)
+	mux.HandleFunc("/v1/allusers", handlersContext.GetAllUsersHandler)
 
-	mux.Handle("/final/courses", courseProxy)
-	mux.Handle("/final/courses/", courseProxy)
-	mux.Handle("/final/faq", faqProxy)
-	mux.Handle("/final/faq/", faqProxy)
-	mux.Handle("/final/ws", handlers.NewWebSocketsHandler(handlersContext))
+	//rename later
+	//mux.Handle("/v1/courses", courseProxy)
+	//mux.Handle("/v1/courses/", courseProxy)
+	//mux.Handle("/v1/faq", faqProxy)
+	//mux.Handle("/v1/faq/", faqProxy)
+	//mux.Handle("/final/ws", handlers.NewWebSocketsHandler(handlersContext))
 
 	wrappedMux := handlers.NewCors(mux)
 
