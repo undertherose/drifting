@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const OceanSchema = new Schema({
     name: String, 
-    bottlePosts: [{
+    bottle: [{
         creator: {
             type: {
                 id: {
@@ -29,6 +29,6 @@ const OceanSchema = new Schema({
     }]
 });
 
-const Bottle = mongoose.model('bottle', BottleSchema);
+const Ocean = mongoose.model('ocean', OceanSchema);
 
-module.exports = Bottle;
+module.exports = Ocean;
