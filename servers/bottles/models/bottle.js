@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const BottleSchema = new Schema({
+const OceanSchema = new Schema({
     name: String, 
     bottlePosts: [{
         creator: {
@@ -21,6 +21,10 @@ const BottleSchema = new Schema({
         },
         editedAt: {
             type: Date
+        },
+        isPublic: {
+            type: Boolean,
+            required: true
         }
     }]
 });
