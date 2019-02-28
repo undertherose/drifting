@@ -6,7 +6,7 @@ const app = express();
 
 const PORT = process.env.PORT;
 const instanceName = process.env.NAME;
-const dbURL = 'mongodb://finalmongo:27017/mydb';
+const dbURL = 'mongodb://mongo:27017/mydb';
 
 const connectWithRetry = () => {
     console.log('MongoDB connection with retry');

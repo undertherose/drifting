@@ -1,21 +1,21 @@
 #!/usr/bin/env bash
 ./build.sh
 
-docker push koolkids441/finalgateway
+docker push wecancodeit/gateway
 
 export TLSCERT=/etc/letsencrypt/live/api.iqueue.zubinchopra.me/fullchain.pem
 export TLSKEY=/etc/letsencrypt/live/api.iqueue.zubinchopra.me/privkey.pem
 export REDISADDR=redisServer:6379
 export MONGOADDR=mongo:27017
 export MYSQL_ROOT_PASSWORD="sqldbpassword"
-export DSN="root:%s@tcp\(finalsqldb:3306\)/auth"
+export DSN="root:%s@tcp\(sqldb:3306\)/auth"
 export COURSESADDR=courses:80
 export MQNAME=rabbitmq
 export MQADDR=rabbitmq:5672
 export FAQADDR=faq:80 
 
 
-ssh -i ~/.ssh/finalPrivKey.pem ec2-user@18.222.243.235 << EOF
+ssh -i ~/.ssh/MyPrivKey.pem ec2-user@18.217.182.145 << EOF
 
     docker rm -f redisServer
     docker rm -f driftingServer

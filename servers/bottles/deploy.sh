@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 ./build.sh
 
-ssh -i ~/.ssh/finalPrivKey.pem ec2-user@18.222.243.235 << EOF
+ssh -i ~/.ssh/MyPrivKey.pem ec2-user@18.217.182.145 << EOF
     
     docker rm -f bottles
 

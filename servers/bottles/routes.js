@@ -1,5 +1,5 @@
 const express = require('express');
-const Courses = require('./models/course');
+const Courses = require('./models/bottle');
 
 const router = express.Router();
 const fetch = require("node-fetch");
