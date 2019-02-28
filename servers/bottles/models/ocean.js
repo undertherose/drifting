@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const OceanSchema = new Schema({
     name: String, 
-    bottle: [{
+    bottles: [{
         creator: {
             type: {
                 id: {
