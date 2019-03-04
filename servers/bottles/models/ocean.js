@@ -25,7 +25,10 @@ const OceanSchema = new Schema({
         isPublic: {
             type: Boolean,
             required: true
-        }
+        },
+        tags : [{
+            tag: String
+        }]
     }]
 });
 

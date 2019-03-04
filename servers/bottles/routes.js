@@ -64,8 +64,9 @@ router.post("/ocean/:name", (req, res) => {
         // create a new bottle
         // make it so people can only edit on their personal page ????
         let bottle = {
-            creator: user,
+            //creator: user,
             body: req.body.body,
+            tags: req.body.tags,
             createdAt: Date.now(),
             isPublic: req.body.isPublic
         };
@@ -79,9 +80,10 @@ router.post("/ocean/:name", (req, res) => {
 
     });
 }).catch(err => {
-    res.status(400).send({error: "bottle coun't be posted: " + err});
+    res.status(400).send({error: "bottle couldn't be posted: " + err});
 });
 
+// update the bottle contents
 router.patch("/ocean/:name/bottles/:id", (req, res) => {
     if (req.body.body || req.body.body.length === 0) {
         res.status(403).send({error : "Cannot posts an empty bottle"});
@@ -92,9 +94,11 @@ router.patch("/ocean/:name/bottles/:id", (req, res) => {
     });
 
     // add seperate API endpoint for getting user type
-
-
 });
+
+router.delete("ocean/:name/bottles/:id", (req, res) => {
+    
+})
 
 
 

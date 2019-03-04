@@ -72,7 +72,7 @@ app.use((req, res, next) => {
 
 //Middleware to parse the request body as JSON
 app.use(express.json());
-app.use('/final', require('./routes.js'));
+app.use('/v1', require('./routes.js'));
 
 app.listen(PORT, instanceName,() => {
     console.log('listening on ' + PORT);
