@@ -29,6 +29,20 @@ const OceanSchema = new Schema({
         tags : [{
             tag: String
         }]
+    }],
+    tags: [{
+        tagName: {
+            type: String,
+            required: true,
+            unique: true
+        }, 
+        tagCount: {
+            type: Number,
+            required: true,
+        },
+        tagLastUpdate: {
+            type: Date
+        }
     }]
 });
 
